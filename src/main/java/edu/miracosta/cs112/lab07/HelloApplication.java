@@ -40,6 +40,10 @@ public class HelloApplication extends Application  { //inheriting core functiona
 
         anchorPane.getChildren().add(label);
         layout.getChildren().add(anchorPane);
+
+        Button button = new Button();
+        button.setText("This is a button");
+        layout.getChildren().add(button);
     }
 
     // TODO: follow steps 2-9 in README.md to create a start method
