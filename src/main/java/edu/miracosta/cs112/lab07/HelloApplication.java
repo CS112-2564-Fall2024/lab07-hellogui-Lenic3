@@ -32,7 +32,7 @@ public class HelloApplication extends Application  { //inheriting core functiona
         Label label = new Label();
         label.setText("Hello GUI World");
 
-        layout.getChildren.add(label);
+        layout.getChildren().add(label);
 
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setBottomAnchor(label, 0.0);
