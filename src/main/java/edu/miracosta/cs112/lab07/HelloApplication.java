@@ -11,7 +11,7 @@ import javafx.scene.control.Button;     //class for button component
 import javafx.event.EventHandler;       //interface for handling events
 import javafx.event.ActionEvent;        //class for type of event for action (like button or key pressed)
 
-public class HelloApplication extends Application  { //inheriting core functionality + this class will handle events
+public class HelloApplication extends Application implements EventHandler<ActionEvent> { //inheriting core functionality + this class will handle events
     /*** GUI COMPONENTS ***/
     // TODO: follow step 25 in README.md to create reference variables
 
@@ -20,18 +20,18 @@ public class HelloApplication extends Application  { //inheriting core functiona
         launch(args); //method from Application class, must be called to setup javafx application
     }
 
-    public void start(Stage primaryStage) throws Exception{
+    Label label;
+    Button button;
+    public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Hello GUI: Lenice Bojorge Sanchez");
 
         StackPane layout = new StackPane();
 
-        Scene scene = new Scene(layout, 300, 300);
+        Scene scene = new Scene(layout, 400, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Label label = new Label();
-        label.setText("Hello GUI World");
-
+        label = new Label("Hello GUI World");
         layout.getChildren().add(label);
 
         AnchorPane anchorPane = new AnchorPane();
@@ -41,11 +41,24 @@ public class HelloApplication extends Application  { //inheriting core functiona
         anchorPane.getChildren().add(label);
         layout.getChildren().add(anchorPane);
 
-        Button button = new Button();
-        button.setText("This is a button");
-        layout.getChildren().add(button);
-    }
+        button = new Button("This is a button");
+        anchorPane.setBottomAnchor(button, 0.0);
+        anchorPane.setBottomAnchor(button, 0.0);
+        anchorPane.getChildren().add(button);
+        button.setOnAction(this);
 
+        Button button2 = new Button();
+        button2.setText("This is Button 2");
+        layout.getChildren().add(button2);
+
+
+
+    }
+    public void handle(ActionEvent e){
+        if (e.getSource() == button){
+        label.setText("New Text");
+        }
+    }
     // TODO: follow steps 2-9 in README.md to create a start method
 
     // TODO: follow steps 10-21 in README.md to add objects to your layout (inside start)
